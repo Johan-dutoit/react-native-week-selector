@@ -1,0 +1,57 @@
+{
+  "name": "react-native-week-selector",
+  "version": "0.0.1",
+  "description": "React Native week selector",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src/ -d lib/ --copy-files",
+    "prepublish": "npm run build",
+    "flow": "flow"
+  },
+  "files": [
+    "lib/**"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Johan-dutoit/react-native-week-selector.git"
+  },
+  "keywords": [
+    "RN",
+    "rn",
+    "react",
+    "native",
+    "react native",
+    "week",
+    "week selector",
+    "week-selector",
+    "react native week",
+    "react native week selector",
+    "react-native-week",
+    "react-native-week-selector",
+    "selector"
+  ],
+  "author": "Johan du Toit",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Johan-dutoit/react-native-week-selector/issues"
+  },
+  "homepage": "https://github.com/Johan-dutoit/react-native-week-selector#readme",
+  "dependencies": {
+    "date-fns": "^1.29.0"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-plugin-transform-class-properties": "6.24.1",
+    "babel-preset-flow": "6.23.0",
+    "babel-preset-react-native": "^4.0.1",
+    "flow-bin": "0.81.0",
+    "metro-react-native-babel-preset": "0.46.0",
+    "react": "16.5.0",
+    "react-native": "0.57.1"
+  }
+}
