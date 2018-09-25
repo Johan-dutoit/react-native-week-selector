@@ -24,7 +24,10 @@ npm install react-native-week-selector --save
 
 ## <a name='preview'>Preview</a>
 
-![](https://github.com/Johan-dutoit/react-native-stagger-in/blob/master/preview.gif)
+Try it on [Expo](https://snack.expo.io/@johan-dev/react-native-week-selector)
+<!-- 
+
+![](https://github.com/Johan-dutoit/react-native-week-selector/blob/master/preview.gif) -->
 
 ## <a name='usage'>Usage</a>
 Simply import the component 
