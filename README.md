@@ -50,7 +50,7 @@ Then use as follows
 |---|---|---|
 |**`containerStyle`**|Additional style for the container|`undefined`|
 |**`selectorContainerStyle`**|Additional style for the selector containers|`undefined`|
-|**`whitelistRange`**|2 values indicating the earliest/latest the user can change to|`undefined`|
+|**`whitelistRange`**|2 values indicating the earliest/latest the user can change to|`[]`|
 |**`onWeekChanged`**|Event triggered when changing week|`undefined`|
 |**`weekStartsOn`**|Which day does the week start on|`1` (Monday)|
 |**`renderPreviousSelector`**|Override the default previous selector|`undefined`|

@@ -37,7 +37,8 @@ class WeekSelector extends PureComponent<Props, State> {
   static defaultProps: Props = {
     dayFormat: 'DD',
     monthFormat: 'MMMM',
-    weekStartsOn: 1 // Monday
+    weekStartsOn: 1, // Monday
+    whitelistRange: []
   };
 
   state = {
