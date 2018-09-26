@@ -2,7 +2,7 @@
 
 import React, { PureComponent } from 'react';
 import { StyleSheet, TouchableOpacity, View, Text, Image, } from 'react-native';
-import type { ViewStyleProp } from 'react-native/Libraries/StyleSheet/StyleSheet';
+import type { ViewStyleProp, TextStyleProp } from 'react-native/Libraries/StyleSheet/StyleSheet';
 
 import startOfToday from 'date-fns/start_of_today';
 import startOfWeek from 'date-fns/start_of_week';
@@ -18,6 +18,7 @@ type Props = {
   containerStyle?: ViewStyleProp,
   selectorContainerStyle?: ViewStyleProp,
   dateContainerStyle?: ViewStyleProp,
+  textStyle?: TextStyleProp,
   whitelistRange?: Array<Date>,
   onWeekChanged?: (data: Date) => void,
   weekStartsOn: number,
@@ -53,7 +54,7 @@ class WeekSelector extends PureComponent<Props, State> {
     return (
       <View style={[styles.container, containerStyle]}>
         <View style={[styles.selectorContainer, selectorContainerStyle]}>{this.renderPreviousSelector(date, startDate)}</View>
-        <View style={[styles.dateContainerStyle, dateContainerStyle]}>{this.renderDisplayText(date, weekStartsOn)}</View>
+        <View style={[styles.dateContainer, dateContainerStyle]}>{this.renderDisplayText(date, weekStartsOn)}</View>
         <View style={[styles.selectorContainer, selectorContainerStyle]}>{this.renderNextSelector(date, endDate)}</View>
       </View>
     );
@@ -90,7 +91,7 @@ class WeekSelector extends PureComponent<Props, State> {
   };
 
   renderDisplayText = (date: Date, weekStartsOn: number) => {
-    const { dayFormat, monthFormat } = this.props;
+    const { dayFormat, monthFormat, textStyle } = this.props;
 
     const firstDayOfWeek = startOfWeek(date, { weekStartsOn });
     const lastDayOfWeek = endOfWeek(date, { weekStartsOn });
@@ -104,7 +105,7 @@ class WeekSelector extends PureComponent<Props, State> {
     const text = `${firstDay}${firstMonthText} - ${lastDay} ${lastMonth}`;
 
     return (
-      <Text style={styles.text}>
+      <Text style={[styles.text, textStyle]}>
         {text}
       </Text>
     );
@@ -148,13 +149,11 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   selectorContainer: {
-    width: 18
   },
-  dateContainerStyle: {
-    alignItems: 'center'
+  dateContainer: {
   },
   text: {
-    width: 290
+    alignSelf: 'center'
   }
 });
 
