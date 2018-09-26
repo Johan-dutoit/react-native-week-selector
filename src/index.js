@@ -149,6 +149,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   selectorContainer: {
+    width: 32
   },
   dateContainer: {
   },
