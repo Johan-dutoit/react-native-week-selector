@@ -17,6 +17,7 @@ import format from 'date-fns/format';
 type Props = {
   containerStyle?: ViewStyleProp,
   selectorContainerStyle?: ViewStyleProp,
+  dateContainerStyle?: ViewStyleProp,
   whitelistRange?: Array<Date>,
   onWeekChanged?: (data: Date) => void,
   weekStartsOn: number,
@@ -26,7 +27,6 @@ type Props = {
   monthFormat: string,
   onPreviousPress?: (data: Date) => void,
   onNextPress?: (data: Date) => void,
-
 };
 
 type State = {
@@ -47,13 +47,13 @@ class WeekSelector extends PureComponent<Props, State> {
 
   render() {
     const { date } = this.state;
-    const { containerStyle, selectorContainerStyle, whitelistRange, weekStartsOn } = this.props;
+    const { containerStyle, dateContainerStyle, selectorContainerStyle, whitelistRange, weekStartsOn } = this.props;
     const [startDate, endDate] = whitelistRange;
 
     return (
       <View style={[styles.container, containerStyle]}>
         <View style={[styles.selectorContainer, selectorContainerStyle]}>{this.renderPreviousSelector(date, startDate)}</View>
-        <View>{this.renderDisplayText(date, weekStartsOn)}</View>
+        <View style={[styles.dateContainerStyle, dateContainerStyle]}>{this.renderDisplayText(date, weekStartsOn)}</View>
         <View style={[styles.selectorContainer, selectorContainerStyle]}>{this.renderNextSelector(date, endDate)}</View>
       </View>
     );
@@ -149,6 +149,9 @@ const styles = StyleSheet.create({
   },
   selectorContainer: {
     width: 18
+  },
+  dateContainerStyle: {
+    alignItems: 'center'
   },
   text: {
     width: 290

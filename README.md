@@ -50,6 +50,7 @@ Then use as follows
 |---|---|---|
 |**`containerStyle`**|Additional style for the container|`undefined`|
 |**`selectorContainerStyle`**|Additional style for the selector containers|`undefined`|
+|**`dateContainerStyle`**|Additional style for the date container|`undefined`|
 |**`whitelistRange`**|2 values indicating the earliest/latest the user can change to|`[]`|
 |**`onWeekChanged`**|Event triggered when changing week|`undefined`|
 |**`weekStartsOn`**|Which day does the week start on|`1` (Monday)|
