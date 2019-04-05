@@ -42,9 +42,13 @@ class WeekSelector extends PureComponent<Props, State> {
     whitelistRange: []
   };
 
-  state = {
-    date: startOfToday()
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      date: this.props.date || startOfToday()
+    }
+  }
 
   render() {
     const { date } = this.state;
@@ -68,9 +72,7 @@ class WeekSelector extends PureComponent<Props, State> {
     const { renderPreviousSelector } = this.props;
     return (
       <TouchableOpacity onPress={this.onPreviousPress}>
-        {renderPreviousSelector
-          ? renderPreviousSelector()
-          : <Image source={require('./images/left-arrow-black.png')} />}
+          {renderPreviousSelector()}
       </TouchableOpacity>
     )
   };
@@ -83,9 +85,7 @@ class WeekSelector extends PureComponent<Props, State> {
     const { renderNextSelector } = this.props;
     return (
       <TouchableOpacity onPress={this.onNextPress}>
-        {renderNextSelector
-          ? renderNextSelector()
-          : <Image source={require('./images/right-arrow-black.png')} />}
+          {renderNextSelector()}
       </TouchableOpacity>
     );
   };
