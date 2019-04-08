@@ -1,7 +1,7 @@
 // @flow
 
 import React, { PureComponent } from 'react';
-import { StyleSheet, TouchableOpacity, View, Text, Image, } from 'react-native';
+import { StyleSheet, TouchableOpacity, View, Text, Image } from 'react-native';
 import type { ViewStyleProp, TextStyleProp } from 'react-native/Libraries/StyleSheet/StyleSheet';
 
 import startOfToday from 'date-fns/start_of_today';
@@ -15,6 +15,7 @@ import isSameDay from 'date-fns/is_same_day';
 import format from 'date-fns/format';
 
 type Props = {
+  date?: Date,
   containerStyle?: ViewStyleProp,
   selectorContainerStyle?: ViewStyleProp,
   dateContainerStyle?: ViewStyleProp,
@@ -27,12 +28,12 @@ type Props = {
   dayFormat: string,
   monthFormat: string,
   onPreviousPress?: (data: Date) => void,
-  onNextPress?: (data: Date) => void,
+  onNextPress?: (data: Date) => void
 };
 
 type State = {
   date: Date
-}
+};
 
 class WeekSelector extends PureComponent<Props, State> {
   static defaultProps: Props = {
@@ -42,24 +43,36 @@ class WeekSelector extends PureComponent<Props, State> {
     whitelistRange: []
   };
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
-      date: this.props.date || startOfToday()
-    }
+      date: props.date || startOfToday()
+    };
   }
 
   render() {
     const { date } = this.state;
-    const { containerStyle, dateContainerStyle, selectorContainerStyle, whitelistRange, weekStartsOn } = this.props;
+    const {
+      containerStyle,
+      dateContainerStyle,
+      selectorContainerStyle,
+      whitelistRange,
+      weekStartsOn
+    } = this.props;
     const [startDate, endDate] = whitelistRange;
 
     return (
       <View style={[styles.container, containerStyle]}>
-        <View style={[styles.selectorContainer, selectorContainerStyle]}>{this.renderPreviousSelector(date, startDate)}</View>
-        <View style={[styles.dateContainer, dateContainerStyle]}>{this.renderDisplayText(date, weekStartsOn)}</View>
-        <View style={[styles.selectorContainer, selectorContainerStyle]}>{this.renderNextSelector(date, endDate)}</View>
+        <View style={[styles.selectorContainer, selectorContainerStyle]}>
+          {this.renderPreviousSelector(date, startDate)}
+        </View>
+        <View style={[styles.dateContainer, dateContainerStyle]}>
+          {this.renderDisplayText(date, weekStartsOn)}
+        </View>
+        <View style={[styles.selectorContainer, selectorContainerStyle]}>
+          {this.renderNextSelector(date, endDate)}
+        </View>
       </View>
     );
   }
@@ -72,11 +85,13 @@ class WeekSelector extends PureComponent<Props, State> {
     const { renderPreviousSelector } = this.props;
     return (
       <TouchableOpacity onPress={this.onPreviousPress}>
-        {renderPreviousSelector
-          ? renderPreviousSelector()
-          : <Image source={require('./images/left-arrow-black.png')} />}
+        {renderPreviousSelector ? (
+          renderPreviousSelector()
+        ) : (
+          <Image source={require('./images/left-arrow-black.png')} />
+        )}
       </TouchableOpacity>
-    )
+    );
   };
 
   renderNextSelector = (currentDate: Date, endDate: Date) => {
@@ -87,9 +102,11 @@ class WeekSelector extends PureComponent<Props, State> {
     const { renderNextSelector } = this.props;
     return (
       <TouchableOpacity onPress={this.onNextPress}>
-        {renderNextSelector
-          ? renderNextSelector()
-          : <Image source={require('./images/right-arrow-black.png')} />}
+        {renderNextSelector ? (
+          renderNextSelector()
+        ) : (
+          <Image source={require('./images/right-arrow-black.png')} />
+        )}
       </TouchableOpacity>
     );
   };
@@ -108,11 +125,7 @@ class WeekSelector extends PureComponent<Props, State> {
     const firstMonthText = firstMonth !== lastMonth ? ` ${firstMonth}` : '';
     const text = `${firstDay}${firstMonthText} - ${lastDay} ${lastMonth}`;
 
-    return (
-      <Text style={[styles.text, textStyle]}>
-        {text}
-      </Text>
-    );
+    return <Text style={[styles.text, textStyle]}>{text}</Text>;
   };
 
   onPreviousPress = () => {
@@ -155,8 +168,7 @@ const styles = StyleSheet.create({
   selectorContainer: {
     width: 32
   },
-  dateContainer: {
-  },
+  dateContainer: {},
   text: {
     alignSelf: 'center'
   }
