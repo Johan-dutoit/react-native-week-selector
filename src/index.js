@@ -42,9 +42,13 @@ class WeekSelector extends PureComponent<Props, State> {
     whitelistRange: []
   };
 
-  state = {
-    date: startOfToday()
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      date: this.props.date || startOfToday()
+    }
+  }
 
   render() {
     const { date } = this.state;
